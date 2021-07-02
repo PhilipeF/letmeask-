@@ -1,17 +1,19 @@
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FormEvent } from 'react';
 import { Button } from '../components/Button';
 
 import { useAuth } from '../hooks/useAuth';
 
-import '../styles/auth.scss';
 import { useState } from 'react';
 import { database } from '../services/firebase';
 
+import '../styles/auth.scss';
+
 export function NewRoom() {
   const { user } = useAuth();
+  const history = useHistory();
 
   const [newRoom, setNewRoom] = useState('');
 
@@ -28,9 +30,10 @@ export function NewRoom() {
       title: newRoom,
       authorId: user?.id,
     });
+
+    history.push(`/rooms/${firebaseRoom.key}`);
   }
 
-  
   return (
     <div id='page-auth'>
       <aside>
