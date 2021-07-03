@@ -1,23 +1,76 @@
-import logoImg from '../assets/images/logo.svg';
+import { FormEvent, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
-import { useParams } from 'react-router-dom';
-
-import '../styles/room.scss';
-import { FormEvent, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
+
+import logoImg from '../assets/images/logo.svg';
+import '../styles/room.scss';
+
+type Question = {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  content: string;
+  isAnswered: boolean;
+  isHighlighted: boolean;
+};
+
+type FirebaseQuestions = Record<
+  string,
+  {
+    author: {
+      name: string;
+      avatar: string;
+    };
+    content: string;
+    isAnswered: boolean;
+    isHighlighted: boolean;
+  }
+>;
 
 type RoomParams = {
   id: string;
 };
 
 export function Room() {
+  const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
-  const { user } = useAuth();
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [title, setTitle] = useState('');
 
-  const roomId = params.id;
+  const roomId = params.id; //Pegando o id da sala logada
+
+  useEffect(() => {
+    const roomRef = database.ref(`rooms/${roomId}`);
+
+    roomRef.on('value', (room) => {
+      const databaseRoom = room.val();
+
+      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
+
+      const parsedQuestions = Object.entries(firebaseQuestions).map(
+        ([key, value]) => {
+          return {
+            id: key,
+            content: value.content,
+            author: value.author,
+            isHighlighted: value.isHighlighted,
+            isAnswered: value.isAnswered,
+          };
+        }
+      );
+
+      setTitle(databaseRoom.title);
+      setQuestions(parsedQuestions);
+
+      console.log('TestandoParseQuestions', parsedQuestions);
+    });
+  }, [roomId]);
 
   async function handlreSendQuestion(event: FormEvent) {
     event.preventDefault(); //para ele não recarregar a tela
@@ -55,8 +108,8 @@ export function Room() {
       </header>
       <main className='content'>
         <div className='room-title'>
-          <h1>Sala de React</h1>
-          <span>4 perguntas</span>
+          <h1>Sala {title}</h1>
+          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
         <form onSubmit={handlreSendQuestion}>
@@ -72,16 +125,16 @@ export function Room() {
                 <span>{user.name}</span>
               </div>
             ) : (
-              <p>sdsd</p>
+              <span>
+                Para enviar um pergunta, <button>faça seu loguin</button>.
+              </span>
             )}
-            <span>
-              Para enviar um pergunta, <button>faça seu loguin</button>.
-            </span>
           </div>
           <Button type='submit' disabled={!user}>
             Enviar pergunta
           </Button>
         </form>
+        {JSON.stringify(questions)}
       </main>
     </div>
   );
