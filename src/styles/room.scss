@@ -4,7 +4,7 @@
     border-bottom: 1px solid #e2e2e2;
 
     .content {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto; // para todo conteudo vir ao centro da pagina
       display: flex;
       justify-content: space-between;
@@ -12,6 +12,15 @@
 
       > img {
         max-height: 45px;
+      }
+
+      div {
+        display: flex;
+        gap: 16px;
+
+        button {
+          height: 40px;
+        }
       }
     }
   }
@@ -95,8 +104,8 @@
       }
     }
 
-      .question-list {
-        margin-top: 52px ;
-      }
+    .question-list {
+      margin-top: 52px;
+    }
   }
 }
