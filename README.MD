@@ -11,7 +11,6 @@
 [Projeto](#projeto)
 </h3>
 <br>
----
 
 <h1 align="center">
     <img alt="Letmeask" src=".github/cover.svg">
@@ -28,8 +27,6 @@ Essse projeto foi desenvolvido com as seguintes tecnlogias:
 - [Firebase](https://firebase.google.com/)
 - [TypeScript](https://www.typescriptlang.org/)
   
-<br>  
-
 ## Como executar
 <br>
 Clone o projeto e acesse a pasta do mesmo 
