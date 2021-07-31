@@ -4,22 +4,18 @@
 
 ## Índice
 <br>
+<h3 align="center">
 
-- [Índice](#índice)
-- [<br>](#)
-- [Tecnologias](#tecnologias)
-- [Como executar](#como-executar)
-- [Projeto](#projeto)
-<br>
+[Tecnlogias](#tecnologias) - 
+[Como executar](#como-executar) - 
+[Projeto](#projeto)
+</h3>
 <br>
 ---
-
-
 
 <h1 align="center">
     <img alt="Letmeask" src=".github/cover.svg">
 </h1>
-
 <br>
 
 ## Tecnologias
@@ -60,7 +56,7 @@ O Letmeask é um projeto desenvolvido com intuito de organizar salas de pergunta
 
 ---
 <br>
-<br>
+
 
 Projeto desenvovido junto a comunidade da [rocketseat](https://rocketseat.com.br/) no evento NLW#togther💜  
  
