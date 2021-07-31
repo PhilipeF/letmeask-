@@ -38,7 +38,7 @@ $ cd letmeask
 ```
 Para iniciá-lo siga os passos abaixo: 
 ```bash
-# Instalar dependecias
+# Instalar dependencias
 $ yarn 
 
 # Iniciar o projeto
