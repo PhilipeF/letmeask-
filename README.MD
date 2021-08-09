@@ -45,7 +45,7 @@ $ yarn
 $ yarn start 
 ```
 
-Para inicar  esse projeto sera necessario criar uma conta no [Firebase](https://firebase.google.com) pois iremos utilizar o serviço do mesmo para fazer autenticação e utilizaremos serviço Realtime Datbase.
+Para inicar  esse projeto sera necessario criar uma conta no [Firebase](https://firebase.google.com) pois iremos utilizar o serviço do mesmo para fazer autenticação e utilizaremos serviço Realtime Database.
 
 ## Projeto
 
