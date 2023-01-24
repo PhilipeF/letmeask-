@@ -55,7 +55,7 @@ O Letmeask é um projeto desenvolvido com intuito de organizar salas de pergunta
 <br>
 
 
-Projeto desenvovido junto a comunidade da [rocketseat](https://rocketseat.com.br/) no evento NLW#togther💜  
+
  
 
 
