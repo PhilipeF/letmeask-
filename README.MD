@@ -51,8 +51,6 @@ Para inicar  esse projeto sera necessario criar uma conta no [Firebase](https://
 
 O Letmeask é um projeto desenvolvido com intuito de organizar salas de perguntas e resposta (Q&A).
 
----
-<br>
 
 
 
